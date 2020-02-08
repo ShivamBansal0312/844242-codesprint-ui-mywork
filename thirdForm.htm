@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Fitness Tracker</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="css/mdb.min.css">
+  <link rel="stylesheet" href="css/last.css">
+  <script src="./scripts/LocalStorageScript.js"></script>
+
+
+  <!-- CSS goes in the document HEAD or added to your external stylesheet -->
+<style type="text/css">
+table.imagetable {
+  font-family: verdana,arial,sans-serif;
+  font-size:11px;
+  color:#333333;
+  border-width: 1px;
+  border-color: #999999;
+  border-collapse: collapse;
+}
+table.imagetable th {
+  background:#b5cfd2 url('cell-blue.jpg');
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #999999;
+}
+table.imagetable td {
+  background:#dcddc0 url('cell-grey.jpg');
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #999999;
+}
+</style>
+
+
+</head>
+
+
+<body onload="loadItems()">
+<!--Intro Section-->
+<table align= "center" style="margin-top:100px" class="imagetable" border="3px">
+  <thead>
+    <tr>
+      <th>NAME</th>
+      <th>ADDRESS</th>
+      <th>CITY</th>
+      <th>PACKAGE</th>
+      <th>TRAINER PREFERENCE</th>
+      <th>PHONE</th>
+    </tr>
+  </thead>
+  <tbody id="prdData"></tbody>
+</table>
+
+
+   <header>
+  <nav class=" navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar ">
+    <div id="menu" class="nav__icon">
+     <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
+    </div>
+    
+      <div class="container">
+         
+          <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+    <ul class=" navbar-nav nav-flex-icons ml-auto">
+      <li class="menu__item"><a href="index.html" class="menu__link ">
+        <span>
+          <i class="fas fa-home"></i>
+          
+        </span>
+        Home</a></li>
+       <li class="menu__item"><a href="form.html" class="menu__link">
+         <span>
+        <i class="fas fa-info-circle"></i>
+         </span>
+         Place Appointment</a></li>
+         <li class="menu__item"><a href="thirdForm.htm" class="menu__link">
+          <span>
+         <i class="fas fa-info-circle"></i>
+          </span>
+          View Appointment</a></li>
+       <li class="menu__item"><a href="contact.html" class="menu__link active">
+         <span>
+         <i class="fas fa-phone-volume"></i>
+        </span>
+         Contact us</a></li>
+    </ul>
+    <strong><img src="img/logo.png" height="100" width="100" class="d-inline-block align-top" alt=""></strong>
+ </div>
+
+      </div>
+ 
+  </nav>
+  <div class="menu">
+   
+    
+    <div class="menu__container">
+      <ul class="menu__list">
+        <li class="menu__item"><a href="index.html" class="menu__link ">
+          <span>
+            <i class="fas fa-home"></i>
+            
+          </span>
+          Home</a></li>
+         <li class="menu__item"><a href="form.html" class="menu__link">
+           <span>
+          <i class="fas fa-info-circle"></i>
+           </span>
+           Place Appointment</a></li>
+           <li class="menu__item"><a href="thirdForm.htm" class="menu__link">
+            <span>
+           <i class="fas fa-info-circle"></i>
+            </span>
+            View Appointment</a></li>
+         <li class="menu__item"><a href="contact.html" class="menu__link active">
+           <span>
+           <i class="fas fa-phone-volume"></i>
+          </span>
+           Contact us</a></li>
+      </ul>
+    </div>
+    
+   </div>
+
+        
+      
+   </header>  
+            
+   <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+       (function() {
+         'use strict';
+         window.addEventListener('load', function() {
+           // Fetch all the forms we want to apply custom Bootstrap validation styles to
+           var forms = document.getElementsByClassName('needs-validation');
+           // Loop over them and prevent submission
+           var validation = Array.prototype.filter.call(forms, function(form) {
+             form.addEventListener('submit', function(event) {
+               if (form.checkValidity() === false) {
+                 event.preventDefault();
+                 event.stopPropagation();
+               }
+               form.classList.add('was-validated');
+             }, false);
+           });
+         }, false);
+       })();
+       </script>
+  
+  
+
+<!-- jQuery -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="js/mdb.min.js"></script>
+<script>document.getElementById('menu').addEventListener('click',withSidebar);
+  document.getElementById('layer').addEventListener('click',withoutSidebar);
+  
+  function withSidebar(){
+    el=document.querySelector('.menu__container');
+    if(!el.classList.contains('slide-right') ){
+      el.classList.toggle('slide-right');}
+    else el.classList.toggle('slide-left');
+    document.querySelector('body').classList.toggle('with-sidebar');
+    console.log('hey');
+  }
+  function withoutSidebar(){
+    el=document.querySelector('.menu__container');
+    document.querySelector('body').classList.remove('with-sidebar');
+    el.classList.toggle('slide-left');
+    
+  }</script>
+  
+</body>
+</html>
